@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>岡大キャンパスマップ（試作）</title>
-  
-  <!-- LeafletのCSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  
+  <link rel="stylesheet" href="style.css">
   <style>
     /* 画面全体にマップを広げる設定 */
     body { 
@@ -22,7 +23,10 @@
   </style>
 </head>
 <body>
-
+  <header id="top-bar">
+    <button id="reset-btn" aria-label="初期表示に戻す">
+      <img src="icons/update.png" alt="更新">
+    </button>
   <!-- 地図を表示するエリア -->
   <div id="map"></div>
 

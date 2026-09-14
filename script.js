@@ -118,6 +118,20 @@ buildings.forEach(building => {
   }
 });
 
+const resetBtn = document.getElementById('reset-btn');
+
+resetBtn.addEventListener('click', () => {
+    Object.keys(layers).forEach(key => {
+        if (map.hasLayer(layers[key])) {
+            map.removeLayer(layers[key]);
+        }
+    });
+    // 2. common レイヤー（共通表示のレイヤー）のみをマップに再追加
+    if (layers['common']) {
+        map.addLayer(layers['common']);
+    }
+});
+
 // 座標取得機能（開発用）
 map.on('click', function(e) {
   var lat = e.latlng.lat.toFixed(5);
