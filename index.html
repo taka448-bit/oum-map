@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>岡大キャンパスマップ（試作）</title>
+  
+  <!-- LeafletのCSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+  <style>
+    /* 画面全体にマップを広げる設定 */
+    body { 
+      margin: 0; 
+      padding: 0; 
+    }
+    #map { 
+      height: 100vh; 
+      width: 100%; 
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 地図を表示するエリア -->
+  <div id="map"></div>
+
+  <!-- LeafletのJavaScript本体 -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- 作成したscript.jsをモジュールとして読み込み -->
+  <script type="module" src="script.js"></script>
+
+</body>
+</html>
