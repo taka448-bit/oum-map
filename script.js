@@ -12,44 +12,35 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // アイコン設定
+const ICON_SIZES = {
+  small:  [20, 20],
+  middle: [28, 28],
+  big:    [36, 36]
+};
+function createCustomIcon(iconUrl, sizeType = 'middle') {
+  const size = ICON_SIZES[sizeType] || ICON_SIZES.middle;
+  return L.icon({
+    iconUrl: iconUrl,
+    iconSize: size,                       // 例: [28, 28]
+    iconAnchor: [size[0] / 2, size[1]],   // ピンの足元（中央下）を座標の基準点にする
+    popupAnchor: [0, -size[1]]            // ポップアップ位置を上にずらす
+  });
+}
 const icons = {
-  cafe: L.icon({
-    iconUrl: 'icons/cafe.png',
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  }),
-  cafeterria: L.icon({
-    iconUrl: 'icons/cafeterria.png',
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  }),
-  library: L.icon({
-    iconUrl: 'icons/library.png',
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  }),
-  genEdu: L.icon({
-    iconUrl: 'icons/genEdu.png',
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  }),
-  eng: L.icon({
-    iconUrl: 'icons/eng.png',
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  })
+  cafe:       createCustomIcon('icons/cafe.png', 'middle'),
+  cafeterria: createCustomIcon('icons/cafeterria.png', 'middle'),
+  library:    createCustomIcon('icons/library.png', 'middle'),
+  genEdu:     createCustomIcon('icons/genEdu.png', 'middle'),
+  eng:        createCustomIcon('icons/eng.png', 'middle'),
+  sci:        createCustomIcon('icons/sci.png', 'middle')
 };
 
 // レイヤーグループ
 const layers = {
   common: L.layerGroup(),
   genEdu: L.layerGroup(),
-  eng: L.layerGroup()
+  eng: L.layerGroup(),
+  sci: L.layerGroup()
 }
 layers.common.addTo(map);
 const symbolMarkers = {};
@@ -93,10 +84,16 @@ function createPopupContent(building) {
 
 // データからピンを生成
 buildings.forEach(building => {
-  // b.category に応じたアイコンを取得（一致するものがなければ cafeterria をデフォルト指定）
-  const icon = icons[building.category] || icons.cafeterria;
+  let icon;
+  if (building.icon_size){
+    const iconUrl = `icons/${building.category}.png`;
+    icon = createCustomIcon(iconUrl,building.icon_size);
+  }
+  else{
+    icon = icons[building.category] || icons.cafeterria;
+  }
   const popupHTML = createPopupContent(building);
-  // ★ type === 'symbol'（まとめピン）の場合の処理
+  // type === 'symbol'（まとめピン）の場合の処理
   if (building.type === 'symbol') {
     symbolMarkers[building.category] = L.marker([building.lat, building.lng], { icon: icon })
       .addTo(layers.common)
