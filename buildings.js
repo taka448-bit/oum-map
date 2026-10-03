@@ -480,8 +480,8 @@ export const buildings = [
     layerGroup: "hum",
     type: "floor_text",
     image: "images/humCulRes.jpg", 
-    lat: 34.68947,
-    lng: 133.91864,
+    lat: 34.68952,
+    lng: 133.91849,
   },
   {
     id: "humBound_1",
@@ -490,8 +490,8 @@ export const buildings = [
     layerGroup: "hum",
     type: "floor_text",
     image: "images/humBound_1.jpg", 
-    lat: 34.68998,
-    lng: 133.91855,
+    lat: 34.68976,
+    lng: 133.91874,
   },
   {
     id: "humBound_2",
@@ -500,8 +500,8 @@ export const buildings = [
     layerGroup: "hum",
     type: "floor_text",
     image: "images/humBound_2.jpg", 
-    lat: 34.68976,
-    lng: 133.91860,
+    lat: 34.68966,
+    lng: 133.91869,
   },
   {
     id: "humlec",
@@ -510,8 +510,8 @@ export const buildings = [
     layerGroup: "hum",
     type: "floor_text",
     image: "images/humlec.jpg", 
-    lat: 34.69014,
-    lng: 133.91876,
+    lat: 34.68998,
+    lng: 133.91855,
   },
   {
     id: "humArcRoom",
@@ -520,7 +520,7 @@ export const buildings = [
     layerGroup: "hum",
     type: "floor_text",
     image: "images/humArcRoom.jpg", 
-    lat: 34.69038,
-    lng: 133.91868,
+    lat: 34.69015,
+    lng: 133.91875,
   }
 ];
