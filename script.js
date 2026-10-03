@@ -8,14 +8,16 @@ var map = L.map('map', {
 
 // OpenStreetMapタイルの読み込み
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap contributors'
+  attribution: '© OpenStreetMap contributors',
+  maxNativeZoom: 19,
+  maxZoom: 20
 }).addTo(map);
 
 // アイコン設定
 const ICON_SIZES = {
-  small:  [20, 20],
-  middle: [28, 28],
-  big:    [36, 36]
+  small:  [40, 40],
+  middle: [60, 60],
+  big:    [80, 80]
 };
 function createCustomIcon(iconUrl, sizeType = 'middle') {
   const size = ICON_SIZES[sizeType] || ICON_SIZES.middle;
@@ -32,7 +34,8 @@ const icons = {
   library:    createCustomIcon('icons/library.png', 'middle'),
   genEdu:     createCustomIcon('icons/genEdu.png', 'middle'),
   eng:        createCustomIcon('icons/eng.png', 'middle'),
-  sci:        createCustomIcon('icons/sci.png', 'middle')
+  sci:        createCustomIcon('icons/sci.png', 'middle'),
+  hum:        createCustomIcon('icons/hum.png', 'middle')
 };
 
 // レイヤーグループ
@@ -40,7 +43,8 @@ const layers = {
   common: L.layerGroup(),
   genEdu: L.layerGroup(),
   eng: L.layerGroup(),
-  sci: L.layerGroup()
+  sci: L.layerGroup(),
+  hum: L.layerGroup()
 }
 layers.common.addTo(map);
 const symbolMarkers = {};
