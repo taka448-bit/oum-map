@@ -1,4 +1,4 @@
-import { buildings } from './buildings.js';
+import { buildings } from './buildings.js?v=0.1.0';
 
 // 地図の初期化
 var map = L.map('map', {
