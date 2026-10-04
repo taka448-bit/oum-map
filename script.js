@@ -35,7 +35,10 @@ const icons = {
   genEdu:     createCustomIcon('icons/genEdu.png', 'middle'),
   eng:        createCustomIcon('icons/eng.png', 'middle'),
   sci:        createCustomIcon('icons/sci.png', 'middle'),
-  hum:        createCustomIcon('icons/hum.png', 'middle')
+  hum:        createCustomIcon('icons/hum.png', 'middle'),
+  agr:        createCustomIcon('icons/agr.png', 'middle'),
+  edu:        createCustomIcon('icons/edu.png', 'middle'),
+  pha:        createCustomIcon('icons/pha.png', 'middle')
 };
 
 // レイヤーグループ
@@ -44,7 +47,10 @@ const layers = {
   genEdu: L.layerGroup(),
   eng: L.layerGroup(),
   sci: L.layerGroup(),
-  hum: L.layerGroup()
+  hum: L.layerGroup(),
+  agr: L.layerGroup(),
+  edu: L.layerGroup(),
+  pha: L.layerGroup()
 }
 layers.common.addTo(map);
 const symbolMarkers = {};
