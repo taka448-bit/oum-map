@@ -1,4 +1,8 @@
-import { buildings } from './buildings.js?ver=0.1.1';
+const now = new Date();
+const dateStr = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
+
+// 動的 import で building.js にも同じ日付パラメータを付与して読み込む
+const { buildings } = await import(`./buildings.js?v=${dateStr}`);
 
 // 地図の初期化
 var map = L.map('map', {

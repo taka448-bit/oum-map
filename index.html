@@ -2,11 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <title>岡大キャンパスマップ（試作）</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css">
@@ -27,15 +23,26 @@
     <button id="reset-btn" aria-label="初期表示に戻す">
       <img src="icons/update.png" alt="更新">
     </button>
+  </header> <!-- ← 閉じタグを追加 -->
+  
   <!-- 地図を表示するエリア -->
   <div id="map"></div>
 
   <!-- LeafletのJavaScript本体 -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- 作成したscript.jsをモジュールとして読み込み -->
-  <script src="building.js?ver=0.1.1"></script>
-  <script type="module" src="script.js?ver=0.1.1"></script>
+  <!-- script.js の動的読み込み -->
+  <script>
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const dateStr = `${year}${month}${day}`;
 
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = `script.js?v=${dateStr}`;
+    document.body.appendChild(script);
+  </script>
 </body>
 </html>
