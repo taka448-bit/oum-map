@@ -7,8 +7,7 @@ export const buildings = [
     type: "floor_text", 
     icon_size: "big",
     image: "images/muscat.jpg",
-    lat: 34.68943,
-    lng: 133.92047,
+    coordinate: [34.68943,133.92047],
     floors: [
       { floor: "1F",
         items: ['ブックストア'] },
@@ -25,8 +24,7 @@ export const buildings = [
     type: "floor_text", 
     icon_size: "big",
     image: "images/pione.jpg",
-    lat: 34.68934,
-    lng: 133.92440,
+    coordinate: [34.68934,133.92440],
     floors: [
       { floor: "1F",
         items: ['ショップ']},
@@ -41,8 +39,7 @@ export const buildings = [
     type: "floor_text", 
     icon_size: "big",
     image: "images/peach.jpg",
-    lat: 34.68731,
-    lng: 133.92006,
+    coordinate:[34.68731,133.92006],
     floors: [
       { floor: "1F",
         items: ['セブンイレブン','ピーチショップ']},
@@ -61,8 +58,7 @@ export const buildings = [
     type: "floor_text",
     icon_size: "big", 
     image: "images/Uni_hall.jpg",
-    lat: 34.68671,
-    lng: 133.92052,
+    coordinate:[34.68671,133.92052],
     floors: [
       { floor: "1F",
         items: ['喫茶 indent']}
@@ -75,8 +71,7 @@ export const buildings = [
     type: "floor_text", 
     icon_size: "big",
     image: "images/J_cafe.jpg",
-    lat: 34.68526,
-    lng: 133.91953,
+    coordinate:[34.68526,133.91953],
     floors: [
       { floor: "1F",
         items: ['Junko Fukutake terrace'] }
@@ -89,12 +84,76 @@ export const buildings = [
     category: "library",
     type: "floor_text", 
     image: "images/library.jpg",
-    lat: 34.68956,
-    lng: 133.91961,
+    coordinate:[34.68956,133.91961],
     floors: [
       { floor: "1F",
         items: ['図書館']}
     ]
+  },
+  //その他
+  {
+    id: "ShimizuGym",
+    name: "清水体育館",
+    category: "etc",
+    type: "floor_text", 
+    image: "images/ShimizuGym.jpg",
+    coordinate:[34.68609, 133.92058],
+  },
+  {
+    id: "Gym_2",
+    name: "第二体育館",
+    category: "etc",
+    type: "floor_text", 
+    image: "images/Gym_2.jpg",
+    coordinate:[34.68550, 133.92018],
+  },
+  {
+    id: "AnniversaryHall",
+    name: "創立50周年記念館",
+    category: "etc",
+    type: "floor_text", 
+    image: "images/AnniversaryHall.jpg",
+    coordinate:[34.68723, 133.91864],
+  },
+  {
+    id: "InfoCenter",
+    name: "情報統括センター",
+    category: "etc",
+    type: "floor_text", 
+    image: "images/InfoCenter.jpg",
+    coordinate:[34.68996, 133.92054],
+  },
+  {
+    id: "HeadBound",
+    name: "本部棟",
+    category: "etc",
+    type: "floor_text", 
+    image: "images/HeadBound.jpg",
+    coordinate:[34.68679, 133.91862],
+  },
+  {
+    id: "InternationalHall",
+    name: "国際交流会館",
+    category: "etc",
+    type: "floor_text", 
+    image: "images/InternationalHall.jpg",
+    coordinate:[34.69045, 133.91932],
+  },
+  {
+    id: "HospitalCenter",
+    name: "保険管理センター",
+    category: "etc",
+    type: "floor_text", 
+    image: "images/HospitalCenter.jpg",
+    coordinate:[34.68738, 133.92075],
+  },
+  {
+    id: "Incubator",
+    name: "岡山大インキュベータ",
+    category: "etc",
+    type: "floor_text", 
+    image: "images/incubator.jpg",
+    coordinate:[34.68686, 133.91619],
   },
   //一般教育棟
   {
@@ -103,8 +162,7 @@ export const buildings = [
     category: "genEdu",
     icon_size: "big",
     type: "symbol", 
-    lat: 34.68641,
-    lng: 133.92206,
+    coordinate:[34.68641,133.92206],
   },
   {
     id: "genEduBound_abc",
@@ -113,8 +171,7 @@ export const buildings = [
     layerGroup: "genEdu",
     type: "floor_text", 
     image: "images/genEduBound_abc.jpg",
-    lat: 34.68700,
-    lng: 133.92200,
+    coordinate:[34.68700,133.92200],
   },
   {
     id: "genEduBound_de",
@@ -123,8 +180,7 @@ export const buildings = [
     layerGroup: "genEdu",
     type: "floor_text", 
     image: "images/genEduBound_de.jpg",
-    lat: 34.68614,
-    lng: 133.92194,
+    coordinate:[34.68614,133.92194],
   },
   //工学部棟
   {
@@ -133,8 +189,7 @@ export const buildings = [
     category: "eng",
     icon_size: "big",
     type: "symbol", 
-    lat: 34.68970,
-    lng: 133.92253,
+    coordinate:[34.68970,133.92253],
   },
   {
     id: "engBound_1",
@@ -143,8 +198,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text",
     image: "images/engBound_1.jpg", 
-    lat: 34.68968,
-    lng: 133.92157,
+    coordinate:[34.68968,133.92157],
   },
   {
     id: "engBound_2",
@@ -153,8 +207,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_2.jpg",
-    lat: 34.68946,
-    lng: 133.92258,
+    coordinate:[34.68946,133.92258],
   },
   {
     id: "engBound_3",
@@ -163,8 +216,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_3.jpg",
-    lat: 34.68988,
-    lng: 133.92277,
+    coordinate:[34.68988,133.92277],
   },
   {
     id: "engBound_4",
@@ -173,8 +225,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_4.jpg",
-    lat: 34.69000,
-    lng: 133.92339,
+    coordinate:[34.69000,133.92339],
   },
   {
     id: "engBound_5",
@@ -183,8 +234,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_5.jpg",
-    lat: 34.68976,
-    lng: 133.92360,
+    coordinate:[34.68976,133.92360],
   },
   {
     id: "engBound_6",
@@ -193,8 +243,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_6.jpg",
-    lat: 34.68989,
-    lng: 133.92437,
+    coordinate:[34.68989,133.92437],
   },
   {
     id: "engBound_7",
@@ -204,8 +253,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_7.jpg",
-    lat: 34.69011,
-    lng: 133.92103,
+    coordinate:[34.69011,133.92103],
   },
   {
     id: "engBound_8",
@@ -215,8 +263,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_8.jpg",
-    lat: 34.69026,
-    lng: 133.92152,
+    coordinate:[34.69026,133.92152],
   },
   {
     id: "engBound_9",
@@ -226,8 +273,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_9.jpg",
-    lat: 34.69018,
-    lng: 133.92206,
+    coordinate:[34.69018,133.92206],
   },
   {
     id: "engBound_10",
@@ -237,8 +283,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_10.jpg",
-    lat: 34.69021,
-    lng: 133.92252,
+    coordinate:[34.69021,133.92252],
   },
   {
     id: "engBound_11",
@@ -248,8 +293,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_11.jpg",
-    lat: 34.69018,
-    lng: 133.92269,
+   coordinate:[34.69018,133.92269],
   },
   {
     id: "engBound_12",
@@ -259,8 +303,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_12.jpg",
-    lat: 34.69021,
-    lng: 133.92294,
+    coordinate:[34.69021,133.92294],
   },
   {
     id: "engBound_13",
@@ -270,8 +313,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_13.jpg",
-    lat: 34.69023,
-    lng: 133.92363,
+    coordinate:[34.69023,133.92363],
   },
   {
     id: "engBound_14",
@@ -281,8 +323,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_14.jpg",
-    lat: 34.69022,
-    lng: 133.92393,
+    coordinate:[34.69022,133.92393],
   },
   {
     id: "engBound_15",
@@ -292,8 +333,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_15.jpg",
-    lat: 34.69018,
-    lng: 133.92422,
+    coordinate: [34.69018,133.92422],
   },
   {
     id: "engBound_16",
@@ -303,8 +343,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_16.jpg",
-    lat: 34.69032,
-    lng: 133.92438,
+    coordinate: [34.69032,133.92438],
   },
   {
     id: "engBound_17",
@@ -314,8 +353,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_17.jpg",
-    lat: 34.69055,
-    lng: 133.92129,
+    coordinate: [34.69055,133.92129],
   },
   {
     id: "engBound_18",
@@ -325,8 +363,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_18.jpg",
-    lat: 34.69054,
-    lng: 133.92145,
+    coordinate: [34.69054,133.92145],
   },
   {
     id: "engBound_19",
@@ -336,8 +373,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_19.jpg",
-    lat: 34.69054,
-    lng: 133.92180,
+    coordinate: [34.69054,133.92180],
   },
   {
     id: "engBound_20",
@@ -347,8 +383,27 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_20.jpg",
-    lat: 34.69054,
-    lng: 133.92217,
+    coordinate: [34.69054,133.92217],
+  },
+  {
+    id: "engBound_21",
+    name: "工学部21号館",
+    category: "eng",
+    icon_size: "small",
+    layerGroup: "eng",
+    type: "floor_text", 
+    image: "images/engBound_21.jpg",
+    coordinate: [34.69061,133.92295],
+  },
+  {
+    id: "engSer",
+    name: "工学部実験研究棟",
+    category: "eng",
+    icon_size: "small",
+    layerGroup: "eng",
+    type: "floor_text", 
+    image: "images/engSer.jpg",
+    coordinate: [34.69063,133.92401],
   },
   {
     id: "engNatRes",
@@ -357,8 +412,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engNat.jpg",
-    lat: 34.68947,
-    lng: 133.92313,
+    coordinate: [34.68947,133.92313],
   },
   {
     id: "engCommons",
@@ -367,8 +421,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engCommons.jpg",
-    lat: 34.68940,
-    lng: 133.92387,
+    coordinate: [34.68940,133.92387],
   },
   {
     id: "engEnvBound",
@@ -377,8 +430,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engEnv.jpg",
-    lat: 34.68974,
-    lng: 133.92505,
+    coordinate: [34.68974,133.92505],
   },
   //理学部
   {
@@ -387,8 +439,7 @@ export const buildings = [
     category: "sci",
     icon_size: "big",
     type: "symbol", 
-    lat: 34.68848,
-    lng: 133.92160,
+    coordinate: [34.68848,133.92160],
   },
   {
     id: "sciBound_main",
@@ -397,8 +448,7 @@ export const buildings = [
     layerGroup: "sci",
     type: "floor_text",
     image: "images/sciBound_main.jpg", 
-    lat: 34.68845,
-    lng: 133.92025,
+    coordinate: [34.68845,133.92025],
   },
   {
     id: "sciBound_2",
@@ -407,8 +457,7 @@ export const buildings = [
     layerGroup: "sci",
     type: "floor_text",
     image: "images/sciBound_2.jpg", 
-    lat: 34.68868,
-    lng: 133.92187,
+    coordinate: [34.68868,133.92187],
   },
   {
     id: "sciCollabo",
@@ -417,8 +466,7 @@ export const buildings = [
     layerGroup: "sci",
     type: "floor_text",
     image: "images/sciCollabo.jpg", 
-    lat: 34.68826,
-    lng: 133.92146,
+    coordinate: [34.68826,133.92146],
   },
   {
     id: "sciNatRes",
@@ -427,8 +475,7 @@ export const buildings = [
     layerGroup: "sci",
     type: "floor_text",
     image: "images/sciNatRes.jpg", 
-    lat: 34.68864,
-    lng: 133.92277,
+    coordinate: [34.68864,133.92277],
   },
   {
     id: "sciIntRes",
@@ -437,8 +484,7 @@ export const buildings = [
     layerGroup: "sci",
     type: "floor_text",
     image: "images/sciIntRes.jpg", 
-    lat: 34.68827,
-    lng: 133.92199,
+    coordinate: [34.68827,133.92199],
   },
   {
     id: "sciLifeSupp",
@@ -447,8 +493,7 @@ export const buildings = [
     layerGroup: "sci",
     type: "floor_text",
     image: "images/sciLifeSupp.jpg", 
-    lat: 34.68820,
-    lng: 133.92280,
+    coordinate: [34.68820,133.92280],
   },
   {
     id: "sciInnoLab",
@@ -457,18 +502,7 @@ export const buildings = [
     layerGroup: "sci",
     type: "floor_text",
     image: "images/sciInnoLab.jpg", 
-    lat: 34.68848,
-    lng: 133.92287,
-  },
-  {
-    id: "sciInnoLab",
-    name: "共創イノベーションラボ",
-    category: "sci",
-    layerGroup: "sci",
-    type: "floor_text",
-    image: "images/sciInnoLab.jpg", 
-    lat: 34.68848,
-    lng: 133.92287,
+    coordinate: [34.68848,133.92287],
   },
   //文・法・経学部
   {
@@ -477,8 +511,7 @@ export const buildings = [
     category: "hum",
     icon_size: "big",
     type: "symbol", 
-    lat: 34.68927,
-    lng: 133.91846,
+    coordinate: [34.68927,133.91846],
   },
   {
     id: "humCulRes",
@@ -487,8 +520,7 @@ export const buildings = [
     layerGroup: "hum",
     type: "floor_text",
     image: "images/humCulRes.jpg", 
-    lat: 34.68813,
-    lng: 133.91854,
+    coordinate: [34.68813,133.91854],
   },
   {
     id: "humBound_1",
@@ -497,8 +529,7 @@ export const buildings = [
     layerGroup: "hum",
     type: "floor_text",
     image: "images/humBound_1.jpg", 
-    lat: 34.68895,
-    lng: 133.91833,
+    coordinate: [34.68895,133.91833],
   },
   {
     id: "humBound_2",
@@ -507,8 +538,7 @@ export const buildings = [
     layerGroup: "hum",
     type: "floor_text",
     image: "images/humBound_2.jpg", 
-    lat: 34.68847,
-    lng: 133.91836,
+    coordinate: [34.68847,133.91836],
   },
   {
     id: "humLec",
@@ -517,8 +547,7 @@ export const buildings = [
     layerGroup: "hum",
     type: "floor_text",
     image: "images/humLec.jpg", 
-    lat: 34.68954,
-    lng: 133.91862,
+    coordinate: [34.68954,133.91862],
   },
   {
     id: "humArcRoom",
@@ -527,8 +556,7 @@ export const buildings = [
     layerGroup: "hum",
     type: "floor_text",
     image: "images/humArcRoom.jpg", 
-    lat: 34.68998,
-    lng: 133.91855,
+    coordinate: [34.68998,133.91855],
   },
   //農学部
   {
@@ -537,8 +565,7 @@ export const buildings = [
     category: "agr",
     icon_size: "big",
     type: "symbol", 
-    lat: 34.68597,
-    lng: 133.91801,
+    coordinate: [34.68597,133.91801],
   },
   {
     id: "agrBound_1",
@@ -547,8 +574,7 @@ export const buildings = [
     layerGroup: "agr",
     type: "floor_text",
     image: "images/agrBound_1.jpg", 
-    lat: 34.68596,
-    lng: 133.91886,
+    coordinate: [34.68596,133.91886],
   },
   {
     id: "agrBound_2",
@@ -557,8 +583,7 @@ export const buildings = [
     layerGroup: "agr",
     type: "floor_text",
     image: "images/agrBound_2.jpg", 
-    lat: 34.68570,
-    lng: 133.91761,
+    coordinate: [34.68570,133.91761],
   },
   {
     id: "agrBound_3",
@@ -567,8 +592,7 @@ export const buildings = [
     layerGroup: "agr",
     type: "floor_text",
     image: "images/agrBound_3.jpg", 
-    lat: 34.68611,
-    lng: 133.91762,
+    coordinate: [34.68611,133.91762],
   },
   {
     id: "agrBound_4",
@@ -577,8 +601,7 @@ export const buildings = [
     layerGroup: "agr",
     type: "floor_text",
     image: "images/agrBound_4.jpg", 
-    lat: 34.68522,
-    lng: 133.91410,
+    coordinate: [34.68522,133.91410],
   },
   //教育学部
   {
@@ -587,8 +610,7 @@ export const buildings = [
     category: "edu",
     icon_size: "big",
     type: "symbol", 
-    lat: 34.68872,
-    lng: 133.92468,
+    coordinate: [34.68870,133.92497],
   },
   {
     id: "eduBound_main",
@@ -597,8 +619,7 @@ export const buildings = [
     layerGroup: "edu",
     type: "floor_text",
     image: "images/eduBound_main.jpg", 
-    lat: 34.68871,
-    lng: 133.92419,
+    coordinate: [34.68871,133.92419],
   },
   {
     id: "eduLec",
@@ -607,8 +628,7 @@ export const buildings = [
     layerGroup: "edu",
     type: "floor_text",
     image: "images/eduLec.jpg", 
-    lat: 34.68816,
-    lng: 133.92421,
+    coordinate: [34.68816,133.92421],
   },
   {
     id: "eduEas",
@@ -617,8 +637,7 @@ export const buildings = [
     layerGroup: "edu",
     type: "floor_text",
     image: "images/eduEas.jpg", 
-    lat: 34.68853,
-    lng: 133.92565,
+    coordinate: [34.68853,133.92565],
   },
   {
     id: "eduGym",
@@ -627,8 +646,7 @@ export const buildings = [
     layerGroup: "edu",
     type: "floor_text",
     image: "images/eduGym.jpg", 
-    lat: 34.68894,
-    lng: 133.92548,
+    coordinate: [34.68894,133.92548],
   },
   {
     id: "eduMus",
@@ -637,8 +655,7 @@ export const buildings = [
     layerGroup: "edu",
     type: "floor_text",
     image: "images/eduMus.jpg", 
-    lat: 34.68834,
-    lng: 133.92638,
+    coordinate: [34.68834,133.92638],
   },
   //薬学部
   {
@@ -647,8 +664,7 @@ export const buildings = [
     category: "pha",
     icon_size: "big",
     type: "symbol", 
-    lat: 34.68710,
-    lng: 133.91722,
+    coordinate: [34.68710,133.91722],
   },
   {
     id: "phaBound_1",
@@ -657,8 +673,7 @@ export const buildings = [
     layerGroup: "pha",
     type: "floor_text",
     image: "images/phaBound_1.jpg", 
-    lat: 34.68703,
-    lng: 133.91754,
+    coordinate: [34.68703,133.91754],
   },
   {
     id: "phaBound_2",
@@ -667,8 +682,7 @@ export const buildings = [
     layerGroup: "pha",
     type: "floor_text",
     image: "images/phaBound_2.jpg", 
-    lat: 34.68715,
-    lng: 133.91696,
+    coordinate: [34.68715,133.91696],
   },
   {
     id: "phaHerbGarden",
@@ -677,7 +691,6 @@ export const buildings = [
     layerGroup: "pha",
     type: "floor_text",
     image: "images/phaHerbGarden.jpg", 
-    lat: 34.68731,
-    lng: 133.91651,
+    coordinate: [34.68731,133.91651],
   }
 ];

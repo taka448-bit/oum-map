@@ -42,7 +42,8 @@ const icons = {
   hum:        createCustomIcon('icons/hum.png', 'middle'),
   agr:        createCustomIcon('icons/agr.png', 'middle'),
   edu:        createCustomIcon('icons/edu.png', 'middle'),
-  pha:        createCustomIcon('icons/pha.png', 'middle')
+  pha:        createCustomIcon('icons/pha.png', 'middle'),
+  etc:        createCustomIcon('icons/etc.png', 'middle')
 };
 
 // レイヤーグループ
@@ -109,7 +110,7 @@ buildings.forEach(building => {
   const popupHTML = createPopupContent(building);
   // type === 'symbol'（まとめピン）の場合の処理
   if (building.type === 'symbol') {
-    symbolMarkers[building.category] = L.marker([building.lat, building.lng], { icon: icon })
+    symbolMarkers[building.category] = L.marker((building.coordinate), { icon: icon })
       .addTo(layers.common)
       .bindPopup(popupHTML);
 
@@ -123,7 +124,7 @@ buildings.forEach(building => {
   else {
     const targetLayer = layers[building.layerGroup] || layers.common;
 
-    L.marker([building.lat, building.lng], { icon: icon })
+    L.marker((building.coordinate), { icon: icon })
       .addTo(targetLayer)
       .bindPopup(popupHTML);
   }
