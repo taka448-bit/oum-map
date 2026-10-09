@@ -93,7 +93,7 @@ export const buildings = [
   //その他
   {
     id: "ShimizuGym",
-    name: "清水体育館",
+    name: "清水記念体育館",
     category: "etc",
     type: "floor_text", 
     image: "images/ShimizuGym.jpg",
@@ -154,6 +154,14 @@ export const buildings = [
     type: "floor_text", 
     image: "images/incubator.jpg",
     coordinate:[34.68686, 133.91619],
+  },
+  {
+    id: "TraSerCenter",
+    name: "埋没文化財調査研究センター",
+    category: "etc",
+    type: "floor_text", 
+    image: "images/TraSerCenter.jpg",
+    coordinate:[34.69052, 133.92064],
   },
   //一般教育棟
   {
@@ -432,6 +440,15 @@ export const buildings = [
     image: "images/engEnv.jpg",
     coordinate: [34.68974,133.92505],
   },
+  {
+    id: "engNewTechCenter",
+    name: "新技術センター",
+    category: "eng",
+    layerGroup: "eng",
+    type: "floor_text", 
+    image: "images/engNewTechCenter.jpg",
+    coordinate: [34.68971, 133.92642],
+  },
   //理学部
   {
     id: "sciSymbol",
@@ -649,13 +666,22 @@ export const buildings = [
     coordinate: [34.68894,133.92548],
   },
   {
-    id: "eduMus",
-    name: "教育学部音楽棟",
+    id: "eduNorMus",
+    name: "教育学部北音楽棟",
     category: "edu",
     layerGroup: "edu",
     type: "floor_text",
-    image: "images/eduMus.jpg", 
-    coordinate: [34.68834,133.92638],
+    image: "images/eduNorMus.jpg", 
+    coordinate: [34.68852, 133.92645],
+  },
+  {
+    id: "eduSouMus",
+    name: "教育学部南音楽棟",
+    category: "edu",
+    layerGroup: "edu",
+    type: "floor_text",
+    image: "images/eduSouMus.jpg", 
+    coordinate: [34.68818, 133.92638],
   },
   //薬学部
   {
