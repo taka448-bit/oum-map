@@ -1,5 +1,5 @@
 const now = new Date();
-import { buildings } from './buildings.js?v=0.2.0';
+import { buildings } from './buildings.js?v=0.3.0';
 // 地図の初期化
 var map = L.map('map', {
   minZoom: 16, 
@@ -51,9 +51,11 @@ const layers = {
   hum: L.layerGroup(),
   agr: L.layerGroup(),
   edu: L.layerGroup(),
-  pha: L.layerGroup()
+  pha: L.layerGroup(),
+  etc: L.layerGroup()
 }
 layers.common.addTo(map);
+layers.etc.addTo(map);
 const symbolMarkers = {};
 
 // ポップアップHTML生成関数
@@ -138,6 +140,17 @@ resetBtn.addEventListener('click', () => {
     if (layers['common']) {
         map.addLayer(layers['common']);
     }
+});
+//その他表示ボタン
+const toggleEtcBtn = document.getElementById('toggle-etc-btn');
+toggleEtcBtn.addEventListener('click', () => {
+  if (map.hasLayer(layers.etc)) {
+    map.removeLayer(layers.etc);
+    toggleEtcBtn.classList.remove('active');
+  } else {
+    map.addLayer(layers.etc);
+    toggleEtcBtn.classList.add('active');
+  }
 });
 
 // 座標取得機能（開発用）

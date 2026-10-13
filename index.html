@@ -8,7 +8,7 @@
   <meta http-equiv="Expires" content="0">
   <title>岡大キャンパスマップ（試作）</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=0.3.0">
   <style>
     /* 画面全体にマップを広げる設定 */
     body { 
@@ -23,16 +23,19 @@
 </head>
 <body>
   <header id="top-bar">
+    <button id="toggle-etc-btn" class="category-btn active">
+      <img src="icons/etc_2.png" alt="その他">
+    </button>
     <button id="reset-btn" aria-label="初期表示に戻す">
       <img src="icons/update.png" alt="更新">
     </button>
-  </header> <!-- ← 閉じタグを追加 -->
+  </header> 
   
   <!-- 地図を表示するエリア -->
   <div id="map"></div>
 
   <!-- LeafletのJavaScript本体 -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script type="module" src="script.js?v=0.2.0"></script>
+  <script type="module" src="script.js?v=0.3.0"></script>
 </body>
 </html>
