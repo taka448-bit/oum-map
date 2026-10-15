@@ -1,5 +1,5 @@
 const now = new Date();
-import { buildings } from './buildings.js?v=0.3.0';
+import { buildings } from './buildings.js?v=0.4.0';
 // 地図の初期化
 var map = L.map('map', {
   minZoom: 16, 
@@ -58,6 +58,8 @@ layers.common.addTo(map);
 layers.etc.addTo(map);
 const symbolMarkers = {};
 
+const markerMap = {};
+
 // ポップアップHTML生成関数
 function createPopupContent(building) {
   let bodyContent = '';
@@ -106,6 +108,7 @@ buildings.forEach(building => {
     icon = icons[building.category] || icons.cafeterria;
   }
   const popupHTML = createPopupContent(building);
+  let marker;
   // type === 'symbol'（まとめピン）の場合の処理
   if (building.type === 'symbol') {
     symbolMarkers[building.category] = L.marker((building.coordinate), { icon: icon })
@@ -117,6 +120,8 @@ buildings.forEach(building => {
       map.removeLayer(symbolMarkers[building.category]); 
       map.addLayer(layers[building.category]);  
     });
+
+    markerMap[building.id] = marker;
   } 
   // 隠しピンの場合
   else {
@@ -126,20 +131,26 @@ buildings.forEach(building => {
       .addTo(targetLayer)
       .bindPopup(popupHTML);
   }
+  markerMap[building.id] = marker;
 });
 
 const resetBtn = document.getElementById('reset-btn');
 
 resetBtn.addEventListener('click', () => {
-    Object.keys(layers).forEach(key => {
-        if (map.hasLayer(layers[key])) {
-            map.removeLayer(layers[key]);
-        }
-    });
-    // 2. common レイヤー（共通表示のレイヤー）のみをマップに再追加
-    if (layers['common']) {
-        map.addLayer(layers['common']);
+  
+  const isEtcActive = map.hasLayer(layers.etc);
+  Object.keys(layers).forEach(key => {
+    if (map.hasLayer(layers[key])) {
+      map.removeLayer(layers[key]);
     }
+  });
+    // 2. common レイヤー（共通表示のレイヤー）のみをマップに再追加
+  if (layers['common']) {
+   map.addLayer(layers['common']);
+  }
+  if (isEtcActive && layers['etc']) {
+    map.addLayer(layers['etc']);
+  }
 });
 //その他表示ボタン
 const toggleEtcBtn = document.getElementById('toggle-etc-btn');
@@ -151,6 +162,85 @@ toggleEtcBtn.addEventListener('click', () => {
     map.addLayer(layers.etc);
     toggleEtcBtn.classList.add('active');
   }
+});
+// buildings データが別ファイルにある場合は import しておきます
+// import { buildings } from './buildings.js';
+
+// 1. ページ読み込み時にサジェスト（datalist）を自動生成
+const dataList = document.getElementById('building-list');
+
+buildings.forEach(b => {
+  // ① 建物名を候補に追加
+  const option = document.createElement('option');
+  option.value = b.name;
+  dataList.appendChild(option);
+
+  // ② フロア内のアイテム（'学食' や 'セブンイレブン' など）も候補に追加（重複除外）
+  if (b.floors) {
+    b.floors.forEach(f => {
+      f.items.forEach(item => {
+        // まだ datalist にないキーワードなら追加
+        if (!Array.from(dataList.options).some(opt => opt.value === item)) {
+          const itemOption = document.createElement('option');
+          itemOption.value = item; // 'セブンイレブン' や '学食' など
+          dataList.appendChild(itemOption);
+        }
+      });
+    });
+  }
+});
+
+// 2. 検索実行関数
+function searchBuilding() {
+  const query = document.getElementById('search-input').value.trim().toLowerCase();
+  if (!query) return;
+
+  // 建物名(name) または 各階のアイテム(items) にヒットするものを検索
+  const target = buildings.find(b => {
+    // 建物名に含まれるか？
+    const matchName = b.name.toLowerCase().includes(query);
+    
+    // または、いずれかの階の items に含まれるか？
+    const matchItem = b.floors && b.floors.some(f => 
+     Array.isArray(f.items) && f.items.some(item => item.toLowerCase().includes(query))
+    );
+
+    return matchName || matchItem;
+  });
+
+  if (target) {
+    // 1. 検索されたピンの所属レイヤーがオフなら自動でマップに追加する
+    const targetLayerGroup = target.layerGroup || target.category;
+    if (layers[targetLayerGroup] && !map.hasLayer(layers[targetLayerGroup])) {
+      map.addLayer(layers[targetLayerGroup]);
+      
+      // etcレイヤーだった場合はボタンの見た目もONにする
+      if (targetLayerGroup === 'etc' && toggleEtcBtn) {
+        toggleEtcBtn.classList.add('active');
+      }
+    }
+
+    // 2. 該当の座標へ滑らかに移動 (coordinate: [lat, lng])
+    map.flyTo(target.coordinate, 18, {
+      duration: 1.2
+    });
+
+    // 3. マーカーを取得してカメラ移動に合わせてポップアップを開く
+    const targetMarker = markerMap[target.id];
+    if (targetMarker) {
+      setTimeout(() => {
+        targetMarker.openPopup();
+      }, 400); // 0.4秒後にふわっと開く
+    }
+  } else {
+    alert('該当する建物・施設が見つかりませんでした。');
+  }
+}
+
+// イベントリスナーの設定
+document.getElementById('search-btn').addEventListener('click', searchBuilding);
+document.getElementById('search-input').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') searchBuilding();
 });
 
 // 座標取得機能（開発用）
