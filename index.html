@@ -8,7 +8,7 @@
   <meta http-equiv="Expires" content="0">
   <title>岡大キャンパスマップ（試作）</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="style.css?v=0.4.0">
+  <link rel="stylesheet" href="style.css?v=0.4.1">
   <style>
     /* 画面全体にマップを広げる設定 */
     body { 
@@ -25,6 +25,7 @@
   <header id="top-bar">
     <div class="search-container">
       <input type="text" id="search-input" list="building-list" placeholder="建物名・施設名で検索...">
+      <button id="clear-btn" type="button" style="display: none;">✕</button>
       <datalist id="building-list">
         <!-- JSで検索候補を自動追加します -->
       </datalist>
@@ -43,6 +44,6 @@
 
   <!-- LeafletのJavaScript本体 -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script type="module" src="script.js?v=0.4.0"></script>
+  <script type="module" src="script.js?v=0.4.1"></script>
 </body>
 </html>

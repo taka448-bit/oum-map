@@ -147,7 +147,7 @@ export const buildings = [
   },
   {
     id: "KouyuCulturalClub",
-    name: "公友会文科系クラブ棟",
+    name: "校友会文化系クラブ棟",
     category: "etc",
     layerGroup: "etc",
     type: "floor_text", 
@@ -156,7 +156,7 @@ export const buildings = [
   },
   {
     id: "KouyuSportsClub",
-    name: "公友会体育系クラブ棟",
+    name: "校友会体育系クラブ棟",
     category: "etc",
     layerGroup: "etc",
     type: "floor_text", 
@@ -165,7 +165,7 @@ export const buildings = [
   },
   {
     id: "KouyuTraining",
-    name: "公友会トレーニング棟",
+    name: "校友会トレーニング棟",
     category: "etc",
     layerGroup: "etc",
     type: "floor_text", 

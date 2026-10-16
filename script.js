@@ -1,5 +1,5 @@
 const now = new Date();
-import { buildings } from './buildings.js?v=0.4.0';
+import { buildings } from './buildings.js?v=0.4.1';
 // 地図の初期化
 var map = L.map('map', {
   minZoom: 16, 
@@ -111,27 +111,30 @@ buildings.forEach(building => {
   let marker;
   // type === 'symbol'（まとめピン）の場合の処理
   if (building.type === 'symbol') {
-    symbolMarkers[building.category] = L.marker((building.coordinate), { icon: icon })
+    marker = L.marker((building.coordinate), { icon: icon })
       .addTo(layers.common)
       .bindPopup(popupHTML);
+    symbolMarkers[building.category] = marker;
 
     // ピンをクリックした時にレイヤーを切り替える
     symbolMarkers[building.category].on('click', () => {
       map.removeLayer(symbolMarkers[building.category]); 
       map.addLayer(layers[building.category]);  
     });
-
-    markerMap[building.id] = marker;
   } 
   // 隠しピンの場合
   else {
     const targetLayer = layers[building.layerGroup] || layers.common;
 
-    L.marker((building.coordinate), { icon: icon })
+    marker = L.marker((building.coordinate), { icon: icon })
       .addTo(targetLayer)
       .bindPopup(popupHTML);
   }
   markerMap[building.id] = marker;
+
+  if (marker) {
+    markerMap[building.id] = marker;
+  }
 });
 
 const resetBtn = document.getElementById('reset-btn');
@@ -163,31 +166,16 @@ toggleEtcBtn.addEventListener('click', () => {
     toggleEtcBtn.classList.add('active');
   }
 });
-// buildings データが別ファイルにある場合は import しておきます
-// import { buildings } from './buildings.js';
 
 // 1. ページ読み込み時にサジェスト（datalist）を自動生成
 const dataList = document.getElementById('building-list');
 
 buildings.forEach(b => {
-  // ① 建物名を候補に追加
+  //建物名を候補に追加
   const option = document.createElement('option');
   option.value = b.name;
   dataList.appendChild(option);
 
-  // ② フロア内のアイテム（'学食' や 'セブンイレブン' など）も候補に追加（重複除外）
-  if (b.floors) {
-    b.floors.forEach(f => {
-      f.items.forEach(item => {
-        // まだ datalist にないキーワードなら追加
-        if (!Array.from(dataList.options).some(opt => opt.value === item)) {
-          const itemOption = document.createElement('option');
-          itemOption.value = item; // 'セブンイレブン' や '学食' など
-          dataList.appendChild(itemOption);
-        }
-      });
-    });
-  }
 });
 
 // 2. 検索実行関数
@@ -199,18 +187,16 @@ function searchBuilding() {
   const target = buildings.find(b => {
     // 建物名に含まれるか？
     const matchName = b.name.toLowerCase().includes(query);
-    
-    // または、いずれかの階の items に含まれるか？
-    const matchItem = b.floors && b.floors.some(f => 
-     Array.isArray(f.items) && f.items.some(item => item.toLowerCase().includes(query))
-    );
 
-    return matchName || matchItem;
+    return matchName;
   });
 
   if (target) {
     // 1. 検索されたピンの所属レイヤーがオフなら自動でマップに追加する
     const targetLayerGroup = target.layerGroup || target.category;
+    if (symbolMarkers[targetLayerGroup] && map.hasLayer(symbolMarkers[targetLayerGroup])) {
+      map.removeLayer(symbolMarkers[targetLayerGroup]);
+    }
     if (layers[targetLayerGroup] && !map.hasLayer(layers[targetLayerGroup])) {
       map.addLayer(layers[targetLayerGroup]);
       
@@ -222,20 +208,35 @@ function searchBuilding() {
 
     // 2. 該当の座標へ滑らかに移動 (coordinate: [lat, lng])
     map.flyTo(target.coordinate, 18, {
-      duration: 1.2
+      duration: 1.0
     });
 
     // 3. マーカーを取得してカメラ移動に合わせてポップアップを開く
-    const targetMarker = markerMap[target.id];
-    if (targetMarker) {
-      setTimeout(() => {
+    map.once('moveend', () => {
+      const targetMarker = markerMap[target.id];
+      if (targetMarker) {
         targetMarker.openPopup();
-      }, 400); // 0.4秒後にふわっと開く
-    }
-  } else {
-    alert('該当する建物・施設が見つかりませんでした。');
+      }
+    });
   }
 }
+
+const searchInput = document.getElementById('search-input');
+const clearBtn = document.getElementById('clear-btn');
+// 1. 入力欄の文字変化を監視（文字があれば✕を表示、空なら非表示）
+searchInput.addEventListener('input', () => {
+  if (searchInput.value.length > 0) {
+    clearBtn.style.display = 'block';
+  } else {
+    clearBtn.style.display = 'none';
+  }
+});
+// 2. ✕ボタンが押されたら文字を全消しして入力欄にフォーカスを戻す
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  clearBtn.style.display = 'none';
+  searchInput.focus(); // すぐ再入力できるようにフォーカスをあてる
+});
 
 // イベントリスナーの設定
 document.getElementById('search-btn').addEventListener('click', searchBuilding);
