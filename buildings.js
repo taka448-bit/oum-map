@@ -245,12 +245,12 @@ export const buildings = [
     coordinate:[34.68686, 133.91619],
   },
   {
-    id: "Incubator",
-    name: "附属自然生命科学研究支援センター",
+    id: "SportCenter",
+    name: "附属自然生命科学研究支援センター(光・放射線)",
     category: "etc",
     layerGroup: "etc",
     type: "floor_text", 
-    image: "images/incubator.jpg",
+    image: "images/SportCenter.jpg",
     coordinate:[34.68657, 133.91629],
   },
   {
@@ -640,7 +640,7 @@ export const buildings = [
   },
   {
     id: "sciLifeSupp",
-    name: "附属自然生命科学研究支援センター",
+    name: "附属自然生命科学研究支援センター(動物・資源)",
     category: "sci",
     layerGroup: "sci",
     type: "floor_text",

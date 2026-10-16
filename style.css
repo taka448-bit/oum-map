@@ -42,7 +42,7 @@ html, body {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 4px 8px;
-  font-size: 14px;
+  font-size: 12px;
   outline: none;
 }
 
@@ -50,7 +50,7 @@ html, body {
   background: transparent;
   border: none;
   color: #888;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   padding: 0 4px;
   flex-shrink: 0;
@@ -67,7 +67,7 @@ html, body {
   border: none;
   border-radius: 4px;
   padding: 4px 8px;
-  font-size: 13px;
+  font-size: 12px;
   cursor: pointer;
   white-space: nowrap; /* 「検索」文字の改行を防止 */
   flex-shrink: 0;      /* ボタンがつぶれないようにする */

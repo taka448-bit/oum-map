@@ -245,7 +245,7 @@ document.getElementById('search-input').addEventListener('keypress', (e) => {
 });
 
 // 座標取得機能（開発用）
-map.on('click', function(e) {
+//map.on('click', function(e) {
   var lat = e.latlng.lat.toFixed(5);
   var lng = e.latlng.lng.toFixed(5);
   
@@ -253,4 +253,4 @@ map.on('click', function(e) {
     .setLatLng(e.latlng)
     .setContent("クリックした場所の座標:<br>[" + lat + ", " + lng + "]")
     .openOn(map);
-});
+//});
