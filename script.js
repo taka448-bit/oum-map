@@ -1,5 +1,5 @@
 const now = new Date();
-import { buildings } from './buildings.js?v=0.4.1';
+import { buildings } from './buildings.js?v=0.5.0';
 // 地図の初期化
 var map = L.map('map', {
   minZoom: 16, 
