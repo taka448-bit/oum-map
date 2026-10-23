@@ -13,6 +13,16 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 20
 }).addTo(map);
 
+const bounds = [
+    [34.68340, 133.91178], // 左下（SouthWest）の緯度・経度
+    [34.69119, 133.92754]  // 右上（NorthEast）の緯度・経度
+];
+
+// 2. 作成した画像をマップの上に重ねる（ImageOverlay）
+const overlay = L.imageOverlay('images/campus_map.WebP', bounds,
+  {opacity:1.0}
+).addTo(map);
+
 // アイコン設定
 const ICON_SIZES = {
   small:  [40, 40],
@@ -149,7 +159,7 @@ resetBtn.addEventListener('click', () => {
   });
     // 2. common レイヤー（共通表示のレイヤー）のみをマップに再追加
   if (layers['common']) {
-   map.addLayer(layers['common']);
+    map.addLayer(layers['common']);
   }
   if (isEtcActive && layers['etc']) {
     map.addLayer(layers['etc']);
@@ -245,7 +255,7 @@ document.getElementById('search-input').addEventListener('keypress', (e) => {
 });
 
 // 座標取得機能（開発用）
-//map.on('click', function(e) {
+map.on('click', function(e) {
   var lat = e.latlng.lat.toFixed(5);
   var lng = e.latlng.lng.toFixed(5);
   
@@ -253,4 +263,4 @@ document.getElementById('search-input').addEventListener('keypress', (e) => {
     .setLatLng(e.latlng)
     .setContent("クリックした場所の座標:<br>[" + lat + ", " + lng + "]")
     .openOn(map);
-//});
+});
