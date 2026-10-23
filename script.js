@@ -19,7 +19,7 @@ const bounds = [
 ];
 
 // 2. 作成した画像をマップの上に重ねる（ImageOverlay）
-const overlay = L.imageOverlay('images/campus_map.WebP', bounds,
+const overlay = L.imageOverlay('images/campus_map.webp', bounds,
   {opacity:1.0}
 ).addTo(map);
 
