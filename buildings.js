@@ -396,7 +396,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_7.jpg",
-    coordinate:[34.69011,133.92103],
+    coordinate:[34.69026, 133.92096],
   },
   {
     id: "engBound_8",

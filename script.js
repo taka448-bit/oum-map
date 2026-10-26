@@ -1,5 +1,5 @@
 const now = new Date();
-import { buildings } from './buildings.js?v=0.5.0';
+import { buildings } from './buildings.js?v=0.6.0';
 // 地図の初期化
 var map = L.map('map', {
   minZoom: 16, 
@@ -7,21 +7,27 @@ var map = L.map('map', {
 }).setView([34.68717, 133.91987], 17);
 
 // OpenStreetMapタイルの読み込み
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+/*L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap contributors',
   maxNativeZoom: 19,
   maxZoom: 20
-}).addTo(map);
+}).addTo(map);*/
 
 const bounds = [
     [34.68340, 133.91178], // 左下（SouthWest）の緯度・経度
     [34.69119, 133.92754]  // 右上（NorthEast）の緯度・経度
 ];
+const maxBounds = [
+  [34.68166, 133.90929], // 左下（少し外側）
+  [34.69242, 133.92963]  // 右上（少し外側）
+];
 
-// 2. 作成した画像をマップの上に重ねる（ImageOverlay）
 const overlay = L.imageOverlay('images/campus_map.webp', bounds,
   {opacity:1.0}
 ).addTo(map);
+
+map.setMaxBounds(maxBounds);
+map.options.maxBoundsViscosity = 1.0;
 
 // アイコン設定
 const ICON_SIZES = {
@@ -247,11 +253,58 @@ clearBtn.addEventListener('click', () => {
   clearBtn.style.display = 'none';
   searchInput.focus(); // すぐ再入力できるようにフォーカスをあてる
 });
-
 // イベントリスナーの設定
 document.getElementById('search-btn').addEventListener('click', searchBuilding);
 document.getElementById('search-input').addEventListener('keypress', (e) => {
   if (e.key === 'Enter') searchBuilding();
+});
+// 現在地を表示するためのマーカー（青円など）を保持する変数
+let userLocationMarker = null;
+let userLocationAccuracy = null;
+
+// GPSボタンを取得してクリックイベントを設定
+const gpsBtn = document.getElementById('gps-btn');
+
+gpsBtn.addEventListener('click', () => {
+  // ブラウザのGPS機能を起動（高精度モードON）
+  map.locate({
+    setView: true,     // 発見したらそこへ自動でカメラ移動
+    maxZoom: 18,       // 移動時のズームレベル
+    enableHighAccuracy: true // GPSの高精度モードを有効化
+  });
+});
+
+// GPSで位置が取得できたときの処理
+map.on('locationfound', (e) => {
+  const radius = e.accuracy / 2; // 精度誤差の範囲（メートル）
+
+  // すでに現在地マーカーが出ている場合は一度消す
+  if (userLocationMarker) {
+    map.removeLayer(userLocationMarker);
+    map.removeLayer(userLocationAccuracy);
+  }
+
+  // 1. 誤差範囲を示す円を描画（うっすら青い円）
+  userLocationAccuracy = L.circle(e.latlng, radius, {
+    color: '#136AEC',
+    fillColor: '#136AEC',
+    fillOpacity: 0.15,
+    stroke: false
+  }).addTo(map);
+
+  // 2. 現在地を示す青いドットマーカーを描画
+  userLocationMarker = L.circleMarker(e.latlng, {
+    radius: 8,
+    color: '#ffffff',     // 枠線は白
+    weight: 3,
+    fillColor: '#007aff', // 中身はiOS風の青
+    fillOpacity: 1.0
+  }).addTo(map).bindPopup("現在地");
+});
+
+// GPS取得に失敗した場合のエラーハンドリング
+map.on('locationerror', (e) => {
+  alert("位置情報の取得に失敗しました。スマホの位置情報（GPS）設定やブラウザの権限を確認してください。");
 });
 
 // 座標取得機能（開発用）
