@@ -123,7 +123,7 @@ html, body {
   display: flex;
   gap: 8px;
   background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px); /* 背景をうっすらぼかすとおしゃれ */
+  backdrop-filter: blur(8px); /* 背景をうっすらぼかす */
   padding: 8px 12px;
   border-radius: 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
@@ -151,10 +151,8 @@ html, body {
 #map, 
 .leaflet-container, 
 .leaflet-container .leaflet-tile-container {
-  background-color: #e3e9ff !important; /* ★指定したいベタ塗り色 */
+  background-color: #e3e9ff !important; 
 }
-
-/* 2. 画像重ね合わせレイヤーの背景を完全に透明にする */
 .leaflet-image-layer {
   background: transparent !important;
 }

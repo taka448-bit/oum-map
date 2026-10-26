@@ -13,6 +13,7 @@ var map = L.map('map', {
   maxZoom: 20
 }).addTo(map);*/
 
+//マップの範囲
 const bounds = [
     [34.68340, 133.91178], // 左下（SouthWest）の緯度・経度
     [34.69119, 133.92754]  // 右上（NorthEast）の緯度・経度
@@ -39,9 +40,9 @@ function createCustomIcon(iconUrl, sizeType = 'middle') {
   const size = ICON_SIZES[sizeType] || ICON_SIZES.middle;
   return L.icon({
     iconUrl: iconUrl,
-    iconSize: size,                       // 例: [28, 28]
-    iconAnchor: [size[0] / 2, size[1]],   // ピンの足元（中央下）を座標の基準点にする
-    popupAnchor: [0, -size[1]]            // ポップアップ位置を上にずらす
+    iconSize: size,                       
+    iconAnchor: [size[0] / 2, size[1]],   
+    popupAnchor: [0, -size[1]]            
   });
 }
 const icons = {
@@ -199,11 +200,9 @@ function searchBuilding() {
   const query = document.getElementById('search-input').value.trim().toLowerCase();
   if (!query) return;
 
-  // 建物名(name) または 各階のアイテム(items) にヒットするものを検索
+  // 建物名(name)にヒットするものを検索
   const target = buildings.find(b => {
-    // 建物名に含まれるか？
     const matchName = b.name.toLowerCase().includes(query);
-
     return matchName;
   });
 
