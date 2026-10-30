@@ -59,10 +59,10 @@ export const buildings = [
     icon_size: "big", 
     image: "images/Uni_hall.jpg",
     coordinate:[34.68671,133.92052],
-    floors: [
+    /*floors: [
       { floor: "1F",
         items: ['喫茶 indent']}
-    ]
+    ]*/
   },
    {
     id: "J_cafe",
@@ -85,10 +85,10 @@ export const buildings = [
     type: "floor_text", 
     image: "images/library.jpg",
     coordinate:[34.68956,133.91961],
-    floors: [
+    /*floors: [
       { floor: "1F",
         items: ['図書館']}
-    ]
+    ]*/
   },
   //その他
   {
@@ -396,7 +396,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_7.jpg",
-    coordinate:[34.69026, 133.92096],
+    coordinate:[34.69010, 133.92105],
   },
   {
     id: "engBound_8",
@@ -406,7 +406,7 @@ export const buildings = [
     layerGroup: "eng",
     type: "floor_text", 
     image: "images/engBound_8.jpg",
-    coordinate:[34.69026,133.92152],
+    coordinate:[34.69011, 133.92136],
   },
   {
     id: "engBound_9",
@@ -539,6 +539,16 @@ export const buildings = [
     coordinate: [34.69061,133.92295],
   },
   {
+    id: "engEnvManCenter",
+    name: "環境管理センター",
+    category: "eng",
+    icon_size: "small",
+    layerGroup: "eng",
+    type: "floor_text", 
+    image: "images/engSer.jpg",
+    coordinate: [34.69060, 133.92346],
+  },
+  {
     id: "engSer",
     name: "工学部実験研究棟",
     category: "eng",
@@ -659,7 +669,7 @@ export const buildings = [
   //文・法・経学部
   {
     id: "humSymbol",
-    name: "文学部",
+    name: "文法経学部",
     category: "hum",
     icon_size: "big",
     type: "symbol", 
@@ -754,6 +764,15 @@ export const buildings = [
     type: "floor_text",
     image: "images/agrBound_4.jpg", 
     coordinate: [34.68522,133.91410],
+  },
+  {
+    id: "agrSalOffice",
+    name: "農産物販売所",
+    category: "agr",
+    layerGroup: "agr",
+    type: "floor_text",
+    image: "images/agrSalOffice.jpg", 
+    coordinate: [34.68569, 133.91406],
   },
   //教育学部
   {
